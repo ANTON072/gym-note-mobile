@@ -9,6 +9,8 @@ Expo (React Native) を使用したジムノートアプリ
 - **フレームワーク**: Expo + React Native
 - **ルーティング**: expo-router
 - **スタイリング**: @shopify/restyle
+- **状態管理**: Zustand（シングルストアパターン）
+- **認証**: Firebase Auth
 - **フォント**: Roboto (@expo-google-fonts/roboto)
 - **デザインシステム**: IBM Carbon Design System ベース
 
@@ -70,8 +72,32 @@ import { Box, Text } from '@/components/common'
 app/           - expo-router ページ
 components/
   common/      - 共通コンポーネント (Box, Text)
+  auth/        - 認証関連コンポーネント
+lib/
+  firebase/    - Firebase 設定・初期化
+store/         - Zustand ストア
+hooks/         - カスタムフック
+providers/     - プロバイダーコンポーネント
 theme/         - Restyle テーマ定義
+types/         - TypeScript 型定義
 ```
+
+## 状態管理
+
+Zustand のシングルストアパターンを採用。アプリ全体で1つのストアを使用する。
+
+```tsx
+import { useStore } from '@/store'
+
+// 状態の取得
+const user = useStore((state) => state.user)
+const authState = useStore((state) => state.authState)
+
+// アクションの実行
+const setUser = useStore((state) => state.setUser)
+```
+
+参考: https://github.com/pmndrs/zustand/blob/main/docs/guides/flux-inspired-practice.md
 
 ## パスエイリアス
 

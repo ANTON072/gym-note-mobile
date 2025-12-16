@@ -1,13 +1,22 @@
-import { Redirect } from 'expo-router'
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useRouter } from 'expo-router'
+
+import { useStore } from '@/store'
 
 export default function Index() {
-  const [isLoggedIn] = useState(false)
+  const router = useRouter()
+  const authState = useStore((state) => state.authState)
 
-  if (!isLoggedIn) {
-    return <Redirect href="/(auth)/login" />
-  }
+  useEffect(() => {
+    if (authState === 'loading') return
 
-  // ログイン済みならホーム画面へ（後で実装）
-  return <Redirect href="/(tabs)" />
+    if (authState === 'authenticated') {
+      router.replace('/(tabs)')
+    } else {
+      router.replace('/(auth)/login')
+    }
+  }, [authState, router])
+
+  // 認証状態の確認中は何も表示しない
+  return null
 }

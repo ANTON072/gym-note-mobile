@@ -9,6 +9,7 @@ import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 
+import { AuthProvider } from '@/providers/AuthProvider'
 import theme from '@/theme'
 
 SplashScreen.preventAutoHideAsync()
@@ -31,8 +32,10 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Stack screenOptions={{ headerShown: false }} />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <Stack screenOptions={{ headerShown: false }} />
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
