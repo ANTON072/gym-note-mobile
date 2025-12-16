@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import * as Google from 'expo-auth-session/providers/google'
 import * as WebBrowser from 'expo-web-browser'
 import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth'
+import * as Burnt from 'burnt'
 import { auth } from '@/lib/firebase/config'
 import { useStore } from '@/store'
 
@@ -29,6 +30,10 @@ export const useGoogleAuth = () => {
           const credential = GoogleAuthProvider.credential(id_token)
           await signInWithCredential(auth, credential)
           // onAuthStateChanged が状態を更新するので、ここでは何もしない
+          Burnt.toast({
+            title: 'ログインしました',
+            preset: 'done',
+          })
         } catch (e) {
           console.error('Firebase sign in error:', e)
           setError('ログインに失敗しました')
