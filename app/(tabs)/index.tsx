@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'expo-router'
 import { signOut } from 'firebase/auth'
+import * as Burnt from 'burnt'
 
 import { Box, Text, Button } from '@/components/common'
 import { auth } from '@/lib/firebase/config'
@@ -19,6 +20,10 @@ export default function HomeScreen() {
 
   const handleLogout = async () => {
     await signOut(auth)
+    Burnt.toast({
+      title: 'ログアウトしました',
+      preset: 'done',
+    })
   }
 
   return (
