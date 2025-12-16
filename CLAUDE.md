@@ -1,0 +1,83 @@
+# CLAUDE.md
+
+## プロジェクト概要
+
+Expo (React Native) を使用したジムノートアプリ
+
+## 技術スタック
+
+- **フレームワーク**: Expo + React Native
+- **ルーティング**: expo-router
+- **スタイリング**: @shopify/restyle
+- **フォント**: Roboto (@expo-google-fonts/roboto)
+- **デザインシステム**: IBM Carbon Design System ベース
+
+## デザインシステム
+
+### Restyle
+
+`@shopify/restyle` を使用してテーマベースのスタイリングを行う。
+
+#### コンポーネント
+
+- `Box` - View の代わりに使用（レイアウト用）
+- `Text` - Text の代わりに使用（タイポグラフィ用）
+
+```tsx
+import { Box, Text } from '@/components/common'
+
+<Box padding="m" backgroundColor="layer01" borderRadius="s">
+  <Text variant="heading03">タイトル</Text>
+</Box>
+```
+
+### テーマ構成
+
+#### カラー（IBM Carbon Gray Scale）
+
+- `background` - メイン背景（白）
+- `layer01`, `layer02`, `layer03` - レイヤー背景
+- `textPrimary`, `textSecondary`, `textHelper` - テキスト色
+- `interactive`, `interactiveHover`, `interactiveActive` - インタラクティブ要素
+- `supportError`, `supportSuccess`, `supportWarning` - セマンティックカラー
+
+#### スペーシング
+
+| キー | 値 |
+|------|-----|
+| `2xs` | 2px |
+| `xs` | 4px |
+| `s` | 8px |
+| `m` | 16px |
+| `l` | 24px |
+| `xl` | 32px |
+| `2xl` | 40px |
+| `3xl` | 48px |
+| `4xl` | 64px |
+
+#### テキストバリアント
+
+- `heading01` ~ `heading07` - 見出し（14px ~ 54px）
+- `body01`, `body02` - 本文（14px, 16px）
+- `bodyCompact01`, `bodyCompact02` - 詰まった本文
+- `label01`, `label02` - ラベル
+- `helperText01`, `helperText02` - 補助テキスト
+- `legal01`, `legal02` - 法的文言
+
+## ディレクトリ構成
+
+```
+app/           - expo-router ページ
+components/
+  common/      - 共通コンポーネント (Box, Text)
+theme/         - Restyle テーマ定義
+```
+
+## パスエイリアス
+
+`@/*` → プロジェクトルート (`./`)
+
+```tsx
+import theme from '@/theme'
+import { Box, Text } from '@/components/common'
+```
