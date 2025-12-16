@@ -106,6 +106,31 @@ const theme = createTheme({
     focus: palette.blue60,
     focusInverse: palette.white,
 
+    // Button - Primary
+    buttonPrimary: palette.blue60,
+    buttonPrimaryHover: palette.blue70,
+    buttonPrimaryActive: palette.blue80,
+
+    // Button - Secondary
+    buttonSecondary: palette.gray80,
+    buttonSecondaryHover: palette.gray70,
+    buttonSecondaryActive: palette.gray60,
+
+    // Button - Tertiary
+    buttonTertiary: 'transparent',
+    buttonTertiaryHover: palette.blue60,
+    buttonTertiaryActive: palette.blue80,
+
+    // Button - Ghost
+    buttonGhost: 'transparent',
+    buttonGhostHover: palette.gray10,
+    buttonGhostActive: palette.gray20,
+
+    // Button - Danger
+    buttonDanger: palette.red60,
+    buttonDangerHover: palette.red50,
+    buttonDangerActive: '#750E13', // Carbon danger active
+
     // Misc
     overlay: 'rgba(22, 22, 22, 0.5)',
     skeleton01: palette.gray10,

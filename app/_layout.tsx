@@ -11,7 +11,6 @@ import { useEffect } from 'react'
 
 import theme from '@/theme'
 
-// アプリ起動時にスプラッシュを自動で隠さない
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
@@ -23,7 +22,6 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded) {
-      // フォントの読み込みが完了したらスプラッシュを隠す
       SplashScreen.hideAsync()
     }
   }, [fontsLoaded])
@@ -34,7 +32,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </ThemeProvider>
   )
 }

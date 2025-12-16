@@ -1,16 +1,13 @@
-import { View } from 'react-native'
-import { Text } from '@/components/common'
+import { Redirect } from 'expo-router'
+import { useState } from 'react'
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text variant="heading05">Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  )
+  const [isLoggedIn] = useState(false)
+
+  if (!isLoggedIn) {
+    return <Redirect href="/(auth)/login" />
+  }
+
+  // ログイン済みならホーム画面へ（後で実装）
+  return <Redirect href="/(tabs)" />
 }
