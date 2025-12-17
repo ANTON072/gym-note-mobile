@@ -1,3 +1,5 @@
+import { signOut } from 'firebase/auth'
+
 import { auth } from '@/lib/firebase/config'
 
 const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000'
@@ -19,6 +21,7 @@ export class ApiError extends Error {
 async function getIdToken(): Promise<string> {
   const user = auth.currentUser
   if (!user) {
+    await signOut(auth)
     throw new ApiError(401, 'Not authenticated')
   }
   return user.getIdToken()
@@ -42,6 +45,9 @@ export async function httpAuth<T>(
   })
 
   if (!response.ok) {
+    if (response.status === 401) {
+      await signOut(auth)
+    }
     throw new ApiError(response.status, `API error: ${response.status}`)
   }
 

@@ -11,7 +11,7 @@ export default function Index() {
     if (authState === 'loading') return
 
     if (authState === 'authenticated') {
-      router.replace('/(tabs)')
+      router.replace('/(app)/(tabs)')
     } else {
       router.replace('/(auth)/login')
     }
