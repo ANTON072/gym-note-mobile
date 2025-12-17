@@ -5,6 +5,7 @@ import {
   useFonts,
 } from '@expo-google-fonts/roboto'
 import { ThemeProvider } from '@shopify/restyle'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
@@ -13,6 +14,15 @@ import { AuthProvider } from '@/providers/AuthProvider'
 import theme from '@/theme'
 
 SplashScreen.preventAutoHideAsync()
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      gcTime: 1000 * 60 * 60 * 24, // 24時間
+      refetchOnWindowFocus: false, // window.focus時に再取得しない
+    },
+  },
+})
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -34,7 +44,9 @@ export default function RootLayout() {
   return (
     <AuthProvider>
       <ThemeProvider theme={theme}>
-        <Stack screenOptions={{ headerShown: false }} />
+        <QueryClientProvider client={queryClient}>
+          <Stack screenOptions={{ headerShown: false }} />
+        </QueryClientProvider>
       </ThemeProvider>
     </AuthProvider>
   )
