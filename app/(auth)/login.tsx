@@ -34,7 +34,7 @@ export default function LoginPage() {
 
       {error && (
         <Box alignSelf="stretch">
-          <Alert severity="error">Hello World</Alert>
+          <Alert severity="error">{error}</Alert>
         </Box>
       )}
     </Box>
