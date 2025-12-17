@@ -13,7 +13,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (authState === 'authenticated') {
-      router.replace('/(app)/(tabs)')
+      router.replace('/(app)')
     }
   }, [authState, router])
 
