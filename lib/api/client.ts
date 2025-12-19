@@ -1,12 +1,10 @@
+import createClient, { type Middleware } from 'openapi-fetch'
 import { signOut } from 'firebase/auth'
 
 import { auth } from '@/lib/firebase/config'
+import type { paths } from '@/types/api'
 
 const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000'
-
-type RequestOptions = Omit<RequestInit, 'body'> & {
-  body?: unknown
-}
 
 export class ApiError extends Error {
   constructor(
@@ -18,42 +16,27 @@ export class ApiError extends Error {
   }
 }
 
-async function getIdToken(): Promise<string> {
-  const user = auth.currentUser
-  if (!user) {
-    await signOut(auth)
-    throw new ApiError(401, 'Not authenticated')
-  }
-  return user.getIdToken()
-}
-
-export async function httpAuth<T>(
-  path: string,
-  options: RequestOptions = {}
-): Promise<T> {
-  const idToken = await getIdToken()
-  const { body, ...restOptions } = options
-
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    ...restOptions,
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${idToken}`,
-      ...options.headers,
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  })
-
-  if (!response.ok) {
+const authMiddleware: Middleware = {
+  async onRequest({ request }) {
+    const user = auth.currentUser
+    if (!user) {
+      await signOut(auth)
+      throw new ApiError(401, 'Not authenticated')
+    }
+    const idToken = await user.getIdToken()
+    request.headers.set('Authorization', `Bearer ${idToken}`)
+    return request
+  },
+  async onResponse({ response }) {
     if (response.status === 401) {
       await signOut(auth)
     }
-    throw new ApiError(response.status, `API error: ${response.status}`)
-  }
-
-  if (response.status === 204) {
-    return {} as T
-  }
-
-  return response.json()
+    return response
+  },
 }
+
+export const apiClient = createClient<paths>({
+  baseUrl: API_BASE_URL,
+})
+
+apiClient.use(authMiddleware)
