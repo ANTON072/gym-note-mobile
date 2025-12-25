@@ -23,22 +23,24 @@ export default function IndexPage() {
           ),
         }}
       />
-      <Box p="m">
-        <Button>本日のワークアウトを開始する</Button>
-      </Box>
-      <ScrollView>
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
-        <WorkoutCard />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Box p="m">
+          <Box my="l">
+            <Button>本日のワークアウトを開始する</Button>
+          </Box>
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+          <WorkoutCard />
+        </Box>
       </ScrollView>
     </>
   )
