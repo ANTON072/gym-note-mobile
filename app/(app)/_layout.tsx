@@ -13,5 +13,5 @@ export default function AppLayout() {
     }
   }, [authState, router])
 
-  return <Stack screenOptions={{ headerShown: false }} />
+  return <Stack />
 }

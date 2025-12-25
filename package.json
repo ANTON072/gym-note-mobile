@@ -12,7 +12,8 @@
     "lint:fix": "expo lint --fix",
     "generate:types": "npx openapi-typescript docs/openapi.yaml -o types/api.ts",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "android": "expo run:android"
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.4.2",

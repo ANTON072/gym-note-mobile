@@ -166,9 +166,10 @@ const theme = createTheme({
     },
     // Headings
     heading01: {
-      fontFamily: 'Roboto_400Regular',
-      fontSize: 14,
-      lineHeight: 20,
+      fontFamily: 'Roboto_900Black',
+      fontSize: 20,
+      lineHeight: 28,
+      letterSpacing: 0.6,
       color: 'textPrimary',
     },
     heading02: {

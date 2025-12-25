@@ -1,7 +1,6 @@
 import { initializeApp, getApps, getApp } from 'firebase/app'
-import { initializeAuth, getAuth } from 'firebase/auth'
-// @ts-expect-error: getReactNativePersistence は型定義に含まれていないが、ランタイムで存在する
-import { getReactNativePersistence } from '@firebase/auth/dist/rn/index.js'
+//@ts-expect-error - getReactNativePersistence is not in the types but exists at runtime
+import { initializeAuth, getAuth, getReactNativePersistence } from 'firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const firebaseConfig = {

@@ -2,6 +2,7 @@ import {
   Roboto_400Regular,
   Roboto_500Medium,
   Roboto_700Bold,
+  Roboto_900Black,
   useFonts,
 } from '@expo-google-fonts/roboto'
 import { ThemeProvider } from '@shopify/restyle'
@@ -26,6 +27,7 @@ const queryClient = new QueryClient({
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
+    Roboto_900Black,
     Roboto_700Bold,
     Roboto_500Medium,
     Roboto_400Regular,

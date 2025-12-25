@@ -39,6 +39,9 @@
         "projectId": "53ee46c1-81ca-4394-8e53-54fc2559fc37"
       }
     },
-    "owner": "anton072"
+    "owner": "anton072",
+    "android": {
+      "package": "com.anton072.gymnote"
+    }
   }
 }
