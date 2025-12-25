@@ -1,48 +1,45 @@
-import { Box, Text } from '@/components/common'
-import { SettingsIcon } from '@/components/icons'
+import { Box } from '@/components/common'
+import { Button, SettingsButton, WorkoutCard } from '@/components/ui'
+import { APP_NAME } from '@/config'
 import { Stack } from 'expo-router'
-import { ScrollView, TouchableOpacity } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { ScrollView } from 'react-native'
 
 export default function IndexPage() {
-  const insets = useSafeAreaInsets()
-
   return (
-    <Box flex={1}>
+    <>
       <Stack.Screen
         options={{
-          title: 'GYM NOTE',
+          title: APP_NAME,
+          headerTitleStyle: {
+            fontFamily: 'Roboto_900Black',
+            fontSize: 20,
+          },
           headerLeft: () => (
-            <TouchableOpacity onPress={() => console.log('設定')}>
-              <SettingsIcon size={24} color="black" />
-            </TouchableOpacity>
+            <SettingsButton
+              onPress={() => {
+                /* Handle settings press */
+              }}
+            />
           ),
         }}
       />
-      {/* <Stack.Screen options={{ headerShown: false }} /> */}
-      {/* 固定ヘッダー */}
-      {/* <Box
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between"
-        px="m"
-        py="s"
-        style={{ paddingTop: insets.top }}
-      >
-        <TouchableOpacity onPress={() => console.log('設定')}>
-          <SettingsIcon size={24} color="black" />
-        </TouchableOpacity>
-        <Text variant="heading04" style={{ fontFamily: 'Roboto_900Black' }}>
-          GYM NOTE
-        </Text>
-        <Box width={24} />
-      </Box> */}
-      {/* スクロールコンテンツ */}
-      <ScrollView style={{ flex: 1 }}>
-        <Box px="m">
-          <Text>Index Page</Text>
-        </Box>
+      <Box p="m">
+        <Button>本日のワークアウトを開始する</Button>
+      </Box>
+      <ScrollView>
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
+        <WorkoutCard />
       </ScrollView>
-    </Box>
+    </>
   )
 }

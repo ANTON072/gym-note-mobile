@@ -8,8 +8,8 @@ import {
 import { useTheme } from '@shopify/restyle'
 
 import type { Theme } from '@/theme'
-import Box from './Box'
-import Text from './Text'
+import Box from '../common/Box'
+import Text from '../common/Text'
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger'
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl'

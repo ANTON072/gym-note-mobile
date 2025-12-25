@@ -169,11 +169,10 @@ const theme = createTheme({
       fontFamily: 'Roboto_900Black',
       fontSize: 20,
       lineHeight: 28,
-      letterSpacing: 0.6,
       color: 'textPrimary',
     },
     heading02: {
-      fontFamily: 'Roboto_400Regular',
+      fontFamily: 'Roboto_900Black',
       fontSize: 16,
       lineHeight: 24,
       color: 'textPrimary',

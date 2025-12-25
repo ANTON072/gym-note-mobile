@@ -71,8 +71,12 @@ import { Box, Text } from '@/components/common'
 ```
 app/           - expo-router ページ
 components/
-  common/      - 共通コンポーネント (Box, Text)
+  common/      - RN基本パーツのRestyle拡張 (Box, Text)
+  ui/          - 汎用UIコンポーネント (Button, Alert)
+  icons/       - アイコンコンポーネント
+  navigation/  - ヘッダー・ナビゲーション関連 (SettingsButton)
   auth/        - 認証関連コンポーネント
+  features/    - 機能固有のコンポーネント
 lib/
   firebase/    - Firebase 設定・初期化
 store/         - Zustand ストア
@@ -81,6 +85,17 @@ providers/     - プロバイダーコンポーネント
 theme/         - Restyle テーマ定義
 types/         - TypeScript 型定義
 ```
+
+### components ディレクトリの方針
+
+| ディレクトリ | 役割 | 例 |
+|-------------|------|-----|
+| `common/` | RN基本パーツのRestyle拡張 | Box, Text |
+| `ui/` | 再利用可能なUIパーツ | Button, Alert, Input, Card |
+| `icons/` | アイコン | SettingsIcon, ChevronIcon |
+| `navigation/` | ヘッダー・ナビ要素 | SettingsButton, BackButton |
+| `auth/` | 認証関連 | GoogleLoginButton |
+| `features/` | 特定機能に紐づくもの | WorkoutCard, ExerciseList |
 
 ## 状態管理
 

@@ -3,8 +3,8 @@ import { useTheme } from '@shopify/restyle'
 import { Ionicons } from '@expo/vector-icons'
 
 import type { Theme } from '@/theme'
-import Box from './Box'
-import Text from './Text'
+import Box from '../common/Box'
+import Text from '../common/Text'
 
 type AlertSeverity = 'error' | 'warning' | 'info' | 'success'
 type AlertVariant = 'filled' | 'standard'

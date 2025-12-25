@@ -13,5 +13,16 @@ export default function AppLayout() {
     }
   }, [authState, router])
 
-  return <Stack />
+  return (
+    <Stack
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#ffffff',
+        },
+        contentStyle: {
+          backgroundColor: '#ffffff',
+        },
+      }}
+    />
+  )
 }
